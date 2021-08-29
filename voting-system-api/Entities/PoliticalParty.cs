@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace voting_system_api.Entities
 {
-    public class PoliticalParty
+    public class PoliticalParty : IPoliticalParty
     {
         [Key]
         public int Id { get; set; }

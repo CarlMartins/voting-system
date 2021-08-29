@@ -19,13 +19,13 @@ namespace voting_system_api.Repositories
             return await _context.Candidates.FindAsync(id);
         }
 
-        public async Task Create(Candidate candidate)
+        public async Task CreateAsync(Candidate candidate)
         {
             await _context.Candidates.AddAsync(candidate);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var userToDelete = _context.Candidates
                 .FirstOrDefaultAsync(u => u.CandidateId == id);
@@ -36,7 +36,7 @@ namespace voting_system_api.Repositories
             }
         }
 
-        public async Task Update(Candidate candidate)
+        public async Task UpdateAsync(Candidate candidate)
         {
             var userToUpdate = _context.Candidates
                 .FirstOrDefaultAsync(u => u.CandidateId == candidate.CandidateId);
