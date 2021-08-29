@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using voting_system_api.Data;
+using voting_system_api.Repositories;
 
 namespace voting_system_api
 {
@@ -32,6 +33,7 @@ namespace voting_system_api
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddScoped<IPoliticalPartyRepository, PoliticalPartyRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "voting_system_api", Version = "v1"});
